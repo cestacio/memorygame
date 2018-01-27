@@ -1,0 +1,33 @@
+body {
+	background-color: #5a5475;
+	color: white;
+	text-align: center;
+	font-family: "Handlee", cursive;
+}
+
+.gameboard {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.card {
+	height: 125px;
+	width: 125px;
+	background: lightblue;
+	float: left;
+	position: relative;
+	margin: 15px;
+	display: inline-block;
+	border-radius: 20%;
+}
+
+.cardmiddle {
+	height: 125px;
+	width: 125px;
+	background: yellow;
+	float: left;
+	position: relative;
+	margin: 15px;
+	display: inline-block;
+	border-radius: 50%;
+}
