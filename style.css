@@ -19,6 +19,7 @@ body {
 	margin: 15px;
 	display: inline-block;
 	border-radius: 20%;
+	border: solid white 2px;
 }
 
 .cardmiddle {
