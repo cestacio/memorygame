@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
-	<title>Match a Character Memory Game!</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Match a Character Memory Game!</title>
 </head>
+
 <body>
-	<h1>Match - a - Character Memory Game</h1>
-	<div class="gameboard">
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="cardmiddle"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-		<div class="card"></div>
-	</div>
-	<script type="text/javascript" src="app.js"></script>
+    <!-- this is the landing page -->
+    <div id="homepage">
+        <section>
+            <h1>Match - a - Character <br>Memory Game</h1>
+            <a href="#content"><button class="btn">new game</button></a>
+        </section>
+    </div>
+    <!-- this is the gameboard -->
+    <div class="gameboard" id="content">
+        <!-- this is where we keep score -->
+        <div id="scoreboard">
+            <div id="bestscore left">Best Score: <span id="correct-guess" class="bold-text">0</span></div>
+        </div>
+        <!-- these are the cards -->
+		<div class="board">
+		    <div class="row">
+		        <div class="card"><div class="inner">card 1</div></div>
+		        <div class="card"><div class="inner">card 2</div></div>
+		        <div class="card"><div class="inner">card 3</div></div>
+		        <div class="card"><div class="inner">card 4</div></div>
+		        <div class="card"><div class="inner">card 5</div></div>
+		    </div>
+		    <div class="row">
+		        <div class="card"><div class="inner">card 6</div></div>
+		        <div class="card"><div class="inner">card 7</div></div>
+		        <div class="card"><div class="inner">card 8</div></div>
+		        <div class="card"><div class="inner">card 9</div></div>
+		        <div class="card"><div class="inner">card 10</div></div>
+		    </div>
+		    <div class="row">
+		        <div class="card"><div class="inner">card 11</div></div>
+		        <div class="card"><div class="inner">card 12</div></div>
+		        <div class="middle" id="currentscore"><div class="inner">clicks: 
+		        	<br><div id="clickcount">0</div></div></div>
+		        <div class="card"><div class="inner">card 13</div></div>
+		        <div class="card"><div class="inner">card 14</div></div>
+		    </div>
+		    <div class="row">
+		        <div class="card"><div class="inner">card 15</div></div>
+		        <div class="card"><div class="inner">card 16</div></div>
+		        <div class="card"><div class="inner">card 17</div></div>
+		        <div class="card"><div class="inner">card 18</div></div>
+		        <div class="card"><div class="inner">card 19</div></div>
+		    </div>
+		    <div class="row">
+		        <div class="card"><div class="inner">card 20</div></div>
+		        <div class="card"><div class="inner">card 21</div></div>
+		        <div class="card"><div class="inner">card 22</div></div>
+		        <div class="card"><div class="inner">card 23</div></div>
+		        <div class="card"><div class="inner">card 24</div></div>
+		    </div>
+		</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
 </body>
+
 </html>
