@@ -33,8 +33,7 @@ $(function() {
     function shuffle(array) {
         var random = array.length,
             temp,
-            index;
-
+            indexs;
         while (random) {
             index = Math.floor(Math.random() * random--);
             temp = array[random];
@@ -47,15 +46,19 @@ $(function() {
     shuffledArray = shuffle(cardsArray);
 
     //assign images to cards
-    $(".card").each(function() {
-        $(this).append();
+    $(".card").each(function(index) {
+        $(this)
+            .addClass("image")
+            .css("background-image", "url(" + shuffledArray[index] + ") ");
     });
+
+    //hide image and only show when clicked
 
     // add event listener and update count for each click
     $(".card").on("click", function() {
         $("#clickcount").html(clicks++);
-        $(this).fadeOut(1000, function() {
-            $(this).fadeIn(1000);
+        $(this).fadeOut(500, function() {
+            $(this).fadeIn(500);
         });
     });
 });
