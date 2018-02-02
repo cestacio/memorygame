@@ -46,19 +46,15 @@ $(function() {
     shuffledArray = shuffle(cardsArray);
 
     //assign images to cards
-    $(".card").each(function(index) {
+    $(".back").each(function(index) {
         $(this)
             .addClass("image")
             .css("background-image", "url(" + shuffledArray[index] + ") ");
     });
 
-    //hide image and only show when clicked
-
-    // add event listener and update count for each click
+    //add event listener, toggle classes and update count for each click
     $(".card").on("click", function() {
+        $(this).toggleClass("flipped");
         $("#clickcount").html(clicks++);
-        $(this).fadeOut(500, function() {
-            $(this).fadeIn(500);
-        });
     });
 });
