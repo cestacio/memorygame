@@ -1,74 +1,60 @@
-var gameBoard = "#cards";
-var counter = 0;
-var cardOpened = "";
-var imageOpened = "";
-var imageFound = 0;
+$(function() {
+    var clicks = 0;
 
-var cards = [
-    "https://i.imgur.com/Vcz4rtzundefined.gif?2",
-    "https://i.imgur.com/1EBEoGxundefined.png?1",
-    "https://i.imgur.com/cQ9kl0kundefined.jpg?1",
-    "https://i.imgur.com/3IBqx9cundefined.jpg?1",
-    "https://i.imgur.com/X7iddbPundefined.jpg?1",
-    "https://i.imgur.com/wYGcIr2undefined.jpg",
-    "https://i.imgur.com/ubGixv2undefined.jpg?1",
-    "https://i.imgur.com/HcSbU6Pundefined.jpg?1",
-    "https://i.imgur.com/LcecYneundefined.jpg?1",
-    "https://i.imgur.com/ScLbTqCundefined.png?1",
-    "https://i.imgur.com/H4caeX8undefined.png",
-    "https://i.imgur.com/yZnjsuDundefined.jpg?1",
-    "https://i.imgur.com/Vcz4rtzundefined.gif?2",
-    "https://i.imgur.com/1EBEoGxundefined.png?1",
-    "https://i.imgur.com/cQ9kl0kundefined.jpg?1",
-    "https://i.imgur.com/3IBqx9cundefined.jpg?1",
-    "https://i.imgur.com/X7iddbPundefined.jpg?1",
-    "https://i.imgur.com/wYGcIr2undefined.jpg",
-    "https://i.imgur.com/ubGixv2undefined.jpg?1",
-    "https://i.imgur.com/HcSbU6Pundefined.jpg?1",
-    "https://i.imgur.com/LcecYneundefined.jpg?1",
-    "https://i.imgur.com/ScLbTqCundefined.png?1",
-    "https://i.imgur.com/H4caeX8undefined.png",
-];
+    var cardsArray = [
+        "images/1.jpg",
+        "images/1.jpg",
+        "images/2.jpg",
+        "images/2.jpg",
+        "images/3.jpg",
+        "images/3.jpg",
+        "images/4.jpg",
+        "images/4.jpg",
+        "images/5.jpg",
+        "images/5.jpg",
+        "images/6.jpg",
+        "images/6.jpg",
+        "images/7.jpg",
+        "images/7.jpg",
+        "images/8.jpg",
+        "images/8.jpg",
+        "images/9.jpg",
+        "images/9.jpg",
+        "images/10.jpg",
+        "images/10.jpg",
+        "images/11.jpg",
+        "images/11.jpg",
+        "images/12.jpg",
+        "images/12.jpg"
+    ];
 
-/* load images
-$(cards).each(function() {
-	var image = $("<img />").attr("src", this);
-});*/
+    //shuffle cards using Fisher-Yates algorithm
+    function shuffle(array) {
+        var random = array.length,
+            temp,
+            index;
 
-// click start new game
-
-// shuffle cards
-function shuffleCards() {
-    var randomIndex = 0;
-    var temp = 0;
-
-    for (var i = 0; i < cards.length; i++) {
-        randomIndex = Math.floor(Math.random() * i);
-        temp = cards[i];
-        cards[i] = cards[randomIndex];
-        cards[randomIndex] = temp;
+        while (random) {
+            index = Math.floor(Math.random() * random--);
+            temp = array[random];
+            array[random] = array[index];
+            array[index] = temp;
+        }
+        return array;
     }
-    assignCards();
-}
 
-function assignCards() {
-    $('.card').each(function(index) {
-        $(this).attr(data - card - )
-    })
-}
+    var shuffledArray = shuffle(cardsArray);
 
-// flip card
-function flipCard() {}
+    //assign images to cards
+    function assignImages() {
+        //append image url to
+    }
 
-// keep track of number of clicks
-
-// store lowest scoring game in local storage so that players can see record of 
-// best game played
-
-// create newGame button
-function newGame() {
-    shuffleCards();
-    $(gameBoard + " div img").hide();
-    $(gameBoard + " div").css("visibility", "visibile");
-}
-
+    // add event listener and update count for each click
+    $(".card").on("click", function() {
+        $("#clickcount").html(clicks++);
+        $(this).fadeOut(1000, function() {
+            $(this).fadeIn(1000);
+        });
+    });
+});
