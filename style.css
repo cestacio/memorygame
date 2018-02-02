@@ -9,68 +9,21 @@ body {
 	font-size: 20px;
 }
 
-#homepage {
-	height: 100vh;
-	width: 100%;
-	background-size: cover;
-	position: relative;
-}
-
-section {
-	color: white;
-	padding: 1em;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-}
-
-h1 {
-	font-size: 3em;
-}
-
-.btn {
-	border-radius: 50%;
-	border: solid 2px lightblue;
-	background-color: lightblue;
-	font-size: 1em;
-	padding: 0.5em;
-	color: black;
-	width: 75px;
-	height: 75px;
-	cursor: pointer;
-	font-family: "Handlee", cursive;
-}
-
-#content {
-	height: 100vh;
-	width: 100%;
-	background-color: #5a5475;
-	background-size: cover;
-	position: relative;
-}
-
 #scoreboard {
 	margin: 0 auto;
 	text-align: left;
 	max-width: 60vh;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	padding: 20px 20px;
+	padding: 10px 10px;
 }
 
 #bestscore,
 #currentscore {
-	font-size: 18px;
+	font-size: 22px;
 	text-align: center;
 	font-style: bold;
 	color: white;
-}
-
-#bestscore,
-#left {
-	text-align: left;
 }
 
 .board {
@@ -86,26 +39,30 @@ h1 {
 	display: flex;
 }
 
+.container {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	perspective: 800px;
+	/* adding below*/
+	flex: 1 0 auto;
+	border-radius: 25%;
+	margin: 10px;
+}
+
 .card {
-	background: lightsalmon;
-	margin: 10px;
-	color: white;
-	font-weight: bold;
+	width: 100%;
+	height: 100%;
+	position: relative; /*original: absolute*/
+	transform-style: preserve-3d;
+	transition: transform 1s;
+	transform-origin: right center;
+	/*adding below*/
 	flex: 1 0 auto;
-	position: relative;
 	border-radius: 25%;
-}
-
-.middle {
-	background-color: #5a5475;
 	margin: 10px;
-	color: white;
-	font-weight: bold;
-	flex: 1 0 auto;
-	position: relative;
-	border-radius: 25%;
 }
-
+/* adding this*/
 .card:after {
 	content: "";
 	float: left;
@@ -113,15 +70,42 @@ h1 {
 	padding-top: 100%;
 }
 
-.card .inner {
+.card figure {
+	margin: 0;
+	display: block;
 	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+.card .front {
+	background: lightsalmon;
+	border-radius: 25%;
+}
+.card .back {
+	background: blue;
+	transform: rotateY(180deg);
+	border-radius: 25%;
+}
+
+.card.flipped {
+	transform: translateX(-100%) rotateY(-180deg);
+}
+
+.back.image {
+	background-size: cover;
+	background-position: center center;
+}
+
+.middle {
+	background-color: white;
+	margin: 10px;
+	color: white;
+	font-weight: bold;
+	flex: 1 0 auto;
+	position: relative;
+	border-radius: 25%;
 }
 
 .middle .inner {
@@ -133,9 +117,4 @@ h1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.image {
-	background-size: cover;
-	background-position: center center;
 }
