@@ -1,5 +1,6 @@
 $(function() {
     var clicks = 0;
+    var shuffledArray = [];
 
     var cardsArray = [
         "images/1.jpg",
@@ -43,12 +44,12 @@ $(function() {
         return array;
     }
 
-    var shuffledArray = shuffle(cardsArray);
+    shuffledArray = shuffle(cardsArray);
 
     //assign images to cards
-    function assignImages() {
-        //append image url to
-    }
+    $(".card").each(function() {
+        $(this).append();
+    });
 
     // add event listener and update count for each click
     $(".card").on("click", function() {
