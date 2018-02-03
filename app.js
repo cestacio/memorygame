@@ -58,7 +58,8 @@ $(function() {
 			.css("background-image", "url(" + shuffledArray[index] + ") ");
 	});
 
-	//add event listener, toggle classes and update count for each click
+	//add event listener. limit clicks to only two at a time.
+	$(".card").off("click");
 	$(".card").on("click", function() {
 		if (numOfClicks === 0) {
 			clickCounter++;
@@ -102,15 +103,16 @@ $(function() {
 				setTimeout(function() {
 					$(".selected").removeClass("selected");
 					$(".flipped").removeClass("flipped");
-				}, 1100);
+				}, 1200);
 
+				numOfClicks = 0;
 				firstCard = null;
 				firstCardImage = null;
 				secondCard = null;
 				secondCardImage = null;
-				numOfClicks = 0;
 			}
 		}
+
 		if (matchedPairs === 12) {
 			alert("Congratulations, you won! Play again?");
 		}
