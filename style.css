@@ -62,13 +62,13 @@ body {
 	border-radius: 25%;
 	margin: 10px;
 }
-/* adding this*/
+/* adding this
 .card:after {
 	content: "";
 	float: left;
 	display: block;
 	padding-top: 100%;
-}
+}*/
 
 .card figure {
 	margin: 0;
@@ -90,6 +90,10 @@ body {
 }
 
 .card.flipped {
+	transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card.matched {
 	transform: translateX(-100%) rotateY(-180deg);
 }
 
