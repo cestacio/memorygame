@@ -35,6 +35,33 @@ $(function() {
 		"images/12.jpg"
 	];
 
+	var cardId = [
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		7,
+		8,
+		9,
+		10,
+		11,
+		12,
+		13,
+		14,
+		15,
+		16,
+		17,
+		18,
+		19,
+		20,
+		21,
+		22,
+		23,
+		24
+	];
+
 	//shuffle cards using Fisher-Yates algorithm
 	function shuffle(array) {
 		var random = array.length,
@@ -55,7 +82,8 @@ $(function() {
 	$(".back").each(function(index) {
 		$(this)
 			.addClass("image")
-			.css("background-image", "url(" + shuffledArray[index] + ") ");
+			.css("background-image", "url(" + shuffledArray[index] + ") ")
+			.attr("id", cardId[index]);
 	});
 
 	//add event listener. limit clicks to only two at a time.
@@ -63,9 +91,10 @@ $(function() {
 	$(".card").on("click", function() {
 		if (numOfClicks === 0) {
 			clickCounter++;
-			$("#clickcount").html(clickCounter);
+			$("#clickcount").text(clickCounter);
 
 			numOfClicks++;
+
 			firstCard = $(this)
 				.addClass("selected")
 				.toggleClass("flipped");
@@ -75,9 +104,10 @@ $(function() {
 				.css("background-image");
 		} else if (numOfClicks === 1) {
 			clickCounter++;
-			$("#clickcount").html(clickCounter);
+			$("#clickcount").text(clickCounter);
 
 			numOfClicks++;
+
 			secondCard = $(this)
 				.addClass("selected")
 				.toggleClass("flipped");
@@ -95,6 +125,9 @@ $(function() {
 					.removeClass("selected")
 					.addClass("matched");
 
+				//turn off event listener for matched cards
+				$(".matched").off("click");
+
 				firstCard = null;
 				firstCardImage = null;
 				secondCard = null;
@@ -103,18 +136,18 @@ $(function() {
 				setTimeout(function() {
 					$(".selected").removeClass("selected");
 					$(".flipped").removeClass("flipped");
-				}, 1200);
 
-				numOfClicks = 0;
-				firstCard = null;
-				firstCardImage = null;
-				secondCard = null;
-				secondCardImage = null;
+					numOfClicks = 0;
+					firstCard = null;
+					firstCardImage = null;
+					secondCard = null;
+					secondCardImage = null;
+				}, 1200);
 			}
 		}
 
-		if (matchedPairs === 12) {
-			alert("Congratulations, you won! Play again?");
+		if ($(".card.matched").length === 24) {
+			console.log("Congratulations, you won!");
 		}
 	});
 });
