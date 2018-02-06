@@ -113,3 +113,32 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
+.finish-game {
+	text-align: center;
+	border: 2px solid white;
+	border-radius: 25%;
+	background-color: #62778a;
+	font-size: 20px;
+	color: white;
+	padding: 2em;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+.btn {
+	border-radius: 50%;
+	border: solid 2px #8fab74;
+	font-size: 1em;
+	padding: 0.5em;
+	color: white;
+	background-color: #8fab74;
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+	font-family: "Handlee", cursive;
+	font-style: bold;
+}
