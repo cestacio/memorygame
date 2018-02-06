@@ -11,7 +11,7 @@
 
 <body>
     <div id="scoreboard">
-        <div id="bestscore left">Best Score: <span id="correct-guess" class="bold-text">0</span></div>
+        <div class="bestscore left">Best Score: <span id="bestscore" class="bold-text">0</span></div>
     </div>
 
     <div class="board">
@@ -95,7 +95,7 @@
             <section class="container">
                 <div class="middle" id="currentscore">
                     <figure class="inner">clicks: 
-                        <div id="clickcount">0</div>
+                        <div class="clickcount">0</div>
                     </figure>
                     <figure class=""></figure>
                 </div>
@@ -177,6 +177,14 @@
                 </div>
             </section>
         </div>
+    </div>
+    <div class="finish-game" style="display:none"> 
+    	<h1>Congratulations, you won!</h1>
+    	<p>Your final score is: <span class="clickcount"></span></p>
+    	<p>Your current best score is: <span id="bestscore"></span></p>
+    	<a href="index.html">
+            <button class="btn">new game?</button>
+        </a>
     </div>
     <script type="text/javascript" src="app.js"></script>
 </body>
