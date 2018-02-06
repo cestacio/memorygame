@@ -1,12 +1,17 @@
 $(function() {
 	var clickCounter = 0;
+	var bestScore = localStorage.getItem("bestScore");
 	var numOfClicks = 0;
+	var flippedCards = [];
 	var shuffledArray = [];
 	var matchedPairs = 0;
 	var firstCard;
 	var firstCardImage;
+	var firstIndex;
 	var secondCard;
 	var secondCardImage;
+	var secondIndex;
+	var secondId;
 
 	var cardsArray = [
 		"images/1.jpg",
@@ -82,16 +87,19 @@ $(function() {
 	$(".back").each(function(index) {
 		$(this)
 			.addClass("image")
-			.css("background-image", "url(" + shuffledArray[index] + ") ")
-			.attr("id", cardId[index]);
+			.css("background-image", "url(" + shuffledArray[index] + ") ");
+	});
+
+	//assign IDs to cards
+	$(".front").each(function(index) {
+		$(this).attr("id", cardId[index]);
 	});
 
 	//add event listener. limit clicks to only two at a time.
-	$(".card").off("click");
 	$(".card").on("click", function() {
 		if (numOfClicks === 0) {
 			clickCounter++;
-			$("#clickcount").text(clickCounter);
+			$(".clickcount").text(clickCounter);
 
 			numOfClicks++;
 
@@ -102,9 +110,17 @@ $(function() {
 			firstCardImage = $(this)
 				.children("figure.back.image")
 				.css("background-image");
+
+			firstIndex =
+				"#" +
+				parseInt(
+					$(this)
+						.children("figure.front")
+						.attr("id")
+				);
 		} else if (numOfClicks === 1) {
 			clickCounter++;
-			$("#clickcount").text(clickCounter);
+			$(".clickcount").text(clickCounter);
 
 			numOfClicks++;
 
@@ -115,6 +131,14 @@ $(function() {
 			secondCardImage = $(this)
 				.children("figure.back.image")
 				.css("background-image");
+
+			secondIndex =
+				"#" +
+				parseInt(
+					$(this)
+						.children("figure.front")
+						.attr("id")
+				);
 
 			//check if the cards match
 			if (firstCardImage === secondCardImage) {
@@ -128,6 +152,7 @@ $(function() {
 				//turn off event listener for matched cards
 				$(".matched").off("click");
 
+				//reset variables
 				firstCard = null;
 				firstCardImage = null;
 				secondCard = null;
@@ -142,12 +167,36 @@ $(function() {
 					firstCardImage = null;
 					secondCard = null;
 					secondCardImage = null;
-				}, 1200);
+				}, 1000);
 			}
 		}
 
-		if ($(".card.matched").length === 24) {
-			console.log("Congratulations, you won!");
-		}
+		storeScore();
+		checkWin();
 	});
+
+	// store best score in local storage
+	function storeScore() {
+		if (localStorage.getItem("bestscore") === null) {
+			$("bestscore").text("0");
+		}
+		if (clickCounter > localStorage["bestscore"]) {
+			localStorage["bestscore"] = clickCounter;
+			$("#bestscore").text(localStorage["bestscore"]);
+		}
+		if (typeof localStorage["bestscore"] !== "undefined") {
+			$("#bestscore").text(localStorage["bestscore"]);
+		}
+	}
+
+	//check win
+	function checkWin() {
+		if ($(".card.matched").length === 24) {
+			setTimeout(function() {
+				$("#scoreboard").hide();
+				$(".board").hide();
+				$(".finish-game").show();
+			}, 1500);
+		}
+	}
 });
