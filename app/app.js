@@ -34,33 +34,6 @@ $(function() {
 		"images/12.jpg"
 	];
 
-	var cardId = [
-		1,
-		2,
-		3,
-		4,
-		5,
-		6,
-		7,
-		8,
-		9,
-		10,
-		11,
-		12,
-		13,
-		14,
-		15,
-		16,
-		17,
-		18,
-		19,
-		20,
-		21,
-		22,
-		23,
-		24
-	];
-
 	// shuffle cards using Fisher-Yates algorithm
 	function shuffle(array) {
 		var random = array.length,
@@ -84,13 +57,13 @@ $(function() {
 			.css("background-image", "url(" + shuffledArray[index] + ") ");
 	});
 
-	// assign IDs to card front
-	$(".front").each(function(index) {
-		$(this).attr("id", cardId[index]);
-	});
-
 	// flip cards and add event listener. limit clicks to only two at a time.
 	$(".card").on("click", function() {
+		// ignore click if the card is currently flipped
+		if ($(this).hasClass("flipped")) {
+			return;
+		}
+
 		if (numOfClicks === 0) {
 			clickCounter++;
 			$(".clickcount").text(clickCounter);
@@ -153,18 +126,21 @@ $(function() {
 		}
 	}
 
-	/* UPDATE LOCAL STORAGE IN JS AND HTML FILE 
+	/* UPDATE THIS TO INCLUDE LOCAL STORAGE LATER! 
 	// store best score in local storage
-	function storeScore() {
-		if (localStorage.bestscore === "undefined") {
-			localStorage.setItem("bestscore", "0");
-			var bestscore = localStorage.getItem("bestscore");
+	function storeScore(clickCounter) {
+		if (localStorage.getItem("bestScore") === null) {
+			localStorage.setItem("bestScore", "0");
 		}
 
-		if (clickCounter > parseInt(localStorage.bestscore)) {
-			localStorage.setItem("bestscore", clickCounter);
+		if (bestScore === null || bestScore > clickCounter) {
+			localStorage.setItem("bestScore", JSON.stringify(clickCounter));
+			localStorage.getItem("bestScore");
+			$(".best-score").text(
+				JSON.parse(localStorage.getItem("bestScore"))
+			);
 		}
-	}*/
+	} */
 
 	function checkWin() {
 		if ($(".card.matched").length === 24) {
