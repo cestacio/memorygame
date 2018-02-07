@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styling/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Match that Anime Character!</title>
+</head>
+
+<body>
+
+    <div id="scoreboard"> <!-- Edit this scoreboard when local storage has been implemented 
+        <div class="bestscore left">Best Score: <span class="best-score" class="bold-text"></span></div> -->
+    </div> 
+
+    <div class="board">
+        <div class="row">
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="middle" id="currentscore">
+                    <figure class="inner">clicks: 
+                        <div class="clickcount">0</div>
+                    </figure>
+                    <figure class=""></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+            <section class="container">
+                <div class="card">
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="finish-game" style="display:none"> 
+    	<h1>Congratulations, you won!</h1>
+    	<p>Your final score is: <span class="clickcount"></span></p>
+    	<a href="game.html">
+            <button class="btn">new game?</button>
+        </a>
+    </div>
+    <script type="text/javascript" src="app/app.js"></script>
+</body>
+
+</html>
