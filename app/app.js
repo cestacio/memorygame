@@ -1,17 +1,11 @@
 $(function() {
 	var clickCounter = 0;
-	var bestScore = localStorage.getItem("bestScore");
 	var numOfClicks = 0;
-	var flippedCards = [];
 	var shuffledArray = [];
-	var matchedPairs = 0;
 	var firstCard;
 	var firstCardImage;
-	var firstIndex;
 	var secondCard;
 	var secondCardImage;
-	var secondIndex;
-	var secondId;
 
 	var cardsArray = [
 		"images/1.jpg",
@@ -67,7 +61,7 @@ $(function() {
 		24
 	];
 
-	//shuffle cards using Fisher-Yates algorithm
+	// shuffle cards using Fisher-Yates algorithm
 	function shuffle(array) {
 		var random = array.length,
 			temp,
@@ -83,19 +77,19 @@ $(function() {
 
 	shuffledArray = shuffle(cardsArray);
 
-	//assign images to cards
+	// assign images to card back
 	$(".back").each(function(index) {
 		$(this)
 			.addClass("image")
 			.css("background-image", "url(" + shuffledArray[index] + ") ");
 	});
 
-	//assign IDs to cards
+	// assign IDs to card front
 	$(".front").each(function(index) {
 		$(this).attr("id", cardId[index]);
 	});
 
-	//add event listener. limit clicks to only two at a time.
+	// flip cards and add event listener. limit clicks to only two at a time.
 	$(".card").on("click", function() {
 		if (numOfClicks === 0) {
 			clickCounter++;
@@ -110,14 +104,6 @@ $(function() {
 			firstCardImage = $(this)
 				.children("figure.back.image")
 				.css("background-image");
-
-			firstIndex =
-				"#" +
-				parseInt(
-					$(this)
-						.children("figure.front")
-						.attr("id")
-				);
 		} else if (numOfClicks === 1) {
 			clickCounter++;
 			$(".clickcount").text(clickCounter);
@@ -132,71 +118,61 @@ $(function() {
 				.children("figure.back.image")
 				.css("background-image");
 
-			secondIndex =
-				"#" +
-				parseInt(
-					$(this)
-						.children("figure.front")
-						.attr("id")
-				);
+			checkMatch(firstCardImage, secondCardImage);
+		}
+		checkWin();
+	});
 
-			//check if the cards match
-			if (firstCardImage === secondCardImage) {
-				matchedPairs++;
+	function checkMatch(firstCardImage, secondCardImage) {
+		if (firstCardImage === secondCardImage) {
+			numOfClicks = 0;
+
+			$(".selected")
+				.removeClass("selected")
+				.addClass("matched");
+
+			$(".matched").off("click");
+
+			firstCard = null;
+			firstCardImage = null;
+			secondCard = null;
+			secondCardImage = null;
+			flippedCards = [];
+		} else {
+			setTimeout(function() {
+				$(".selected").removeClass("selected");
+				$(".flipped").removeClass("flipped");
+
 				numOfClicks = 0;
-
-				$(".selected")
-					.removeClass("selected")
-					.addClass("matched");
-
-				//turn off event listener for matched cards
-				$(".matched").off("click");
-
-				//reset variables
 				firstCard = null;
 				firstCardImage = null;
 				secondCard = null;
 				secondCardImage = null;
-			} else {
-				setTimeout(function() {
-					$(".selected").removeClass("selected");
-					$(".flipped").removeClass("flipped");
-
-					numOfClicks = 0;
-					firstCard = null;
-					firstCardImage = null;
-					secondCard = null;
-					secondCardImage = null;
-				}, 1000);
-			}
-		}
-
-		storeScore();
-		checkWin();
-	});
-
-	// store best score in local storage
-	function storeScore() {
-		if (localStorage.getItem("bestscore") === null) {
-			$("bestscore").text("0");
-		}
-		if (clickCounter > localStorage["bestscore"]) {
-			localStorage["bestscore"] = clickCounter;
-			$("#bestscore").text(localStorage["bestscore"]);
-		}
-		if (typeof localStorage["bestscore"] !== "undefined") {
-			$("#bestscore").text(localStorage["bestscore"]);
+				flippedCards = [];
+			}, 1000);
 		}
 	}
 
-	//check win
+	/* UPDATE LOCAL STORAGE IN JS AND HTML FILE 
+	// store best score in local storage
+	function storeScore() {
+		if (localStorage.bestscore === "undefined") {
+			localStorage.setItem("bestscore", "0");
+			var bestscore = localStorage.getItem("bestscore");
+		}
+
+		if (clickCounter > parseInt(localStorage.bestscore)) {
+			localStorage.setItem("bestscore", clickCounter);
+		}
+	}*/
+
 	function checkWin() {
 		if ($(".card.matched").length === 24) {
 			setTimeout(function() {
 				$("#scoreboard").hide();
 				$(".board").hide();
 				$(".finish-game").show();
-			}, 1500);
+			}, 1200);
 		}
 	}
 });
