@@ -18,11 +18,15 @@ body {
 	padding: 10px 10px;
 }
 
-#bestscore,
+.best-score {
+	font-size: 22px;
+	font-style:bold;
+}
+
 #currentscore {
 	font-size: 22px;
 	text-align: center;
-	font-style: bold;
+	font-weight: bold;
 	color: white;
 }
 
