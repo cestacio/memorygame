@@ -11,3 +11,4 @@ Requirements:
 - As a player, after clicking two cards that are not a match, I should be able to see them both for at least 1 second before they flip over again
 - (Bonus) Store the lowest-scoring game in local storage, so that players can see a record of the best game played.
 
+Here's the link to the game: http://matchthatanimecharacter.bitballoon.com
