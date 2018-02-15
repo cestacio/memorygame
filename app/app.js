@@ -141,7 +141,7 @@ $(function() {
 		if(clickCounter < bestScore) {
 			localStorage.setItem("bestScore", clickCounter);
 			bestScore = localStorage.getItem("bestScore");
-			$(".best-score").text(bestScore + " NEW BEST SCORE!");
+			$(".best-score").text(bestScore);
 		}
 	}
 
