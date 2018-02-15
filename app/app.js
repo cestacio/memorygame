@@ -6,6 +6,7 @@ $(function() {
 	var firstCardImage;
 	var secondCard;
 	var secondCardImage;
+	var bestScore = localStorage.getItem("bestScore");
 
 	var cardsArray = [
 		"images/1.jpg",
@@ -33,6 +34,13 @@ $(function() {
 		"images/12.jpg",
 		"images/12.jpg"
 	];
+
+	function setBestScore() {
+		bestScore = bestScore || "-";
+		$(".best-score").text(bestScore);
+	}
+
+	setBestScore();
 
 	// shuffle cards using Fisher-Yates algorithm
 	function shuffle(array) {
@@ -126,27 +134,23 @@ $(function() {
 		}
 	}
 
-	/* UPDATE THIS TO INCLUDE LOCAL STORAGE LATER! 
-	// store best score in local storage
-	function storeScore(clickCounter) {
-		if (localStorage.getItem("bestScore") === null) {
-			localStorage.setItem("bestScore", "0");
+	function checkBestScore() {
+		if(bestScore === "-") {
+			bestScore = 100;
 		}
-
-		if (bestScore === null || bestScore > clickCounter) {
-			localStorage.setItem("bestScore", JSON.stringify(clickCounter));
-			localStorage.getItem("bestScore");
-			$(".best-score").text(
-				JSON.parse(localStorage.getItem("bestScore"))
-			);
+		if(clickCounter < bestScore) {
+			localStorage.setItem("bestScore", clickCounter);
+			bestScore = localStorage.getItem("bestScore");
+			$(".best-score").text(bestScore + " NEW BEST SCORE!");
 		}
-	} */
+	}
 
 	function checkWin() {
 		if ($(".card.matched").length === 24) {
 			setTimeout(function() {
 				$("#scoreboard").hide();
 				$(".board").hide();
+				checkBestScore();
 				$(".finish-game").show();
 			}, 1200);
 		}
