@@ -11,8 +11,8 @@
 
 <body>
 
-    <div id="scoreboard"> <!-- Edit this scoreboard when local storage has been implemented 
-        <div class="bestscore left">Best Score: <span class="best-score" class="bold-text"></span></div> -->
+    <div id="scoreboard"> 
+        <div class="bestscore left">Best Score: <span class="best-score"></span></div>
     </div> 
 
     <div class="board">
@@ -180,9 +180,10 @@
         </div>
     </div>
     <div class="finish-game" style="display:none"> 
-    	<h1>Congratulations, you won!</h1>
-    	<p>Your final score is: <span class="clickcount"></span></p>
-    	<a href="game.html">
+        <h1>Congratulations, you won!</h1>
+        <p>Your final score is: <span class="clickcount"></span></p>
+        <p>The best score is: <span class="best-score"></span></p>
+        <a href="game.html">
             <button class="btn">new game?</button>
         </a>
     </div>
